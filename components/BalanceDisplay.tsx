@@ -14,12 +14,12 @@ export const BalanceDisplay: FC = () => {
         connection.onAccountChange(
             publicKey, 
             (accInfo) => {
-                setBalance(accInfo.lamports / LAMPORTS_PER_SOL)
+                setBalance(accInfo.lamports)
             }, 'confirmed'
         )
 
-        connection.getAccountInfo(publicKey).then(info => {
-            setBalance(info.lamports);
+        connection.getAccountInfo(publicKey).then(accInfo => {
+            setBalance(accInfo.lamports);
         })
     }, [connection, publicKey]);
 
